@@ -7,105 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Piedra, papel o tijera</h1>
-    </header>
+<header>
+    <h1>Piedra, papel o tijera</h1>
+</header>
 
-    <div class="score-board">
-        <div id="user-label" class="badge">user</div>
-        <div id="computer-label" class="badge">comp</div>
-        <span id="user-score">0</span>:<span id="computer-score">0</span>
+<div class="score-board">
+    <div id="user-label" class="badge">user</div>
+    <div id="computer-label" class="badge">comp</div>
+    <span id="user-score">0</span>:<span id="computer-score">0</span>
+</div>
+
+<div class="result">
+    <p>El papel cubre la roca, ¡ganaste!</p>
+</div>
+
+<div class="choices">
+    <div class="choice" id="Piedra">
+        <img src="imagenes/piedra.jpg.png" alt="piedra" width="100px">
     </div>
-
-    <div class="result">
-        <p>El papel cubre la roca, ¡ganaste!</p>
+    <div class="choice" id="Papel">
+        <img src="imagenes/papel.jpg.png" alt="papel" width="87px">
     </div>
-
-    <div class="choices">
-        <div class="choice" id="Piedra">
-            <img src="imagenes/piedra.jpg.png" alt="piedra" width="100px">
-        </div>
-        <div class="choice" id="Papel">
-            <img src="imagenes/papel.jpg.png" alt="papel" width="87px">
-        </div>
-        <div class="choice" id="Tijera">
-            <img src="imagenes/tijera.jpg.png" alt="tijera" width="90px">
-        </div>
+    <div class="choice" id="Tijera">
+        <img src="imagenes/tijera.jpg.png" alt="tijera" width="90px">
     </div>
+</div>
 
-    <p id="action-message">Haz tu movimiento</p>
-
-    <script>
-        let userScore = 0;
-        let computerScore = 0;
-        const userScore_span = document.getElementById("user-score");
-        const computerScore_span = document.getElementById("computer-score");
-        const scoreBoard_div = document.querySelector(".score-board");
-        const result_p = document.querySelector(".result > p");
-        const piedra_div = document.getElementById("Piedra");
-        const papel_div = document.getElementById("Papel");
-        const tijera_div = document.getElementById("Tijera");
-
-        function getComputerChoice() {
-            const choices = ['Piedra', 'Papel', 'Tijera'];
-            const randomNumber = Math.floor(Math.random() * 3);
-            return choices[randomNumber];
-        }
-
-        function win(userChoice, computerChoice) {
-            userScore++;
-            userScore_span.innerHTML = userScore;
-            computerScore_span.innerHTML = computerScore;
-            result_p.innerHTML = userChoice + " le gana a " + computerChoice + ". ¡Ganaste!";
-        }
-
-        function lose(userChoice, computerChoice) {
-            computerScore++;
-            userScore_span.innerHTML = userScore;
-            computerScore_span.innerHTML = computerScore;
-            result_p.innerHTML = computerChoice + " le gana a " + userChoice + ". Perdiste.";
-        }
-
-        function draw(userChoice, computerChoice) {
-            result_p.innerHTML = userChoice + " es igual a " + computerChoice + ". Es un empate.";
-        }
-
-        function game(userChoice) {
-            const computerChoice = getComputerChoice();
-            switch (userChoice + computerChoice) {
-                case "PiedraTijera":
-                case "PapelPiedra":
-                case "TijeraPapel":
-                    win(userChoice, computerChoice);
-                    break;
-                case "PiedrPapel":
-                case "PapelTijera":
-                case "TijeraPapel":
-                    lose(userChoice, computerChoice);
-                    break;
-                case "PiedraPiedra":
-                case "PapelPapel":
-                case "TijeraTijera":
-                    draw(userChoice, computerChoice);
-                    break;
-            }
-        }
-
-        function main() {
-            piedra_div.addEventListener('click', function() {
-                game("Piedra");
-            })
-
-            papel_div.addEventListener('click', function() {
-                game("Papel");
-            })
-
-            tijera_div.addEventListener('click', function() {
-                game("Tijera");
-            })
-        }
-
-        main();
-    </script>
+<p id="action-message">Haz tu movimiento</p>
+    <h2>Ya casi terminas</h2>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iconify/2.0.0/iconify.min.js"
+        integrity="sha512-lYMiwcB608+RcqJmP93CMe7b4i9G9QK1RbixsNu4PzMRJMsqr/bUrkXUuFzCNsRUo3IXNUr5hz98lINURv5CNA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./juego.js" defer></script>
 </body>
 </html>
